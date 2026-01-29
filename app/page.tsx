@@ -1,103 +1,131 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import { useState } from "react"
+import { Book, Briefcase, Gamepad2, Package } from "lucide-react"
+import { DialogueBox } from "@/components/dialogue-box"
+import { CommandButton } from "@/components/command-button"
+import { ContentModal } from "@/components/content-modal"
+
+export type MenuOption = "EDUCATION" | "EXPERIENCE" | "HOBBY" | "OTHERS" | null
+
+export default function BattlePage() {
+  const [selectedOption, setSelectedOption] = useState<MenuOption>(null)
+
+  const menuItems = [
+    {
+      id: "EDUCATION" as const,
+      label: "EDUCATION",
+      icon: Book,
+      color: "blue", // Water Type
+    },
+    {
+      id: "EXPERIENCE" as const,
+      label: "EXPERIENCE",
+      icon: Briefcase,
+      color: "green", // Grass Type
+    },
+    {
+      id: "HOBBY" as const,
+      label: "HOBBY",
+      icon: Gamepad2,
+      color: "red", // Fire Type
+    },
+    {
+      id: "OTHERS" as const,
+      label: "OTHERS",
+      icon: Package,
+      color: "pink", // Fairy Type
+    },
+  ]
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <main className="flex min-h-screen w-full flex-col bg-[#1a1a2e]">
+      {/* Top Section - Dark Forest Background with Layered Sprites */}
+      <section
+        // FIX APPLIED: Added 'flex flex-col justify-end' to push characters to the ground
+        className="relative flex-1 flex flex-col justify-end bg-cover bg-bottom bg-repeat-x"
+        style={{
+          backgroundImage: `url('/images/dark-forest.png')`,
+          minHeight: "60vh",
+        }}
+      >
+        {/* Character Stage Container - Team Group Photo */}
+        {/* FIX APPLIED: Removed the typo 'bottom' from the end of the class string */}
+        <div className="relative mx-auto flex h-[500px] w-full max-w-[800px] items-end justify-center mb-14 scale-125 origin-bottom">
+          
+          {/* Zoroark - Closer and Behind (Left Side) */}
+          {/* Adjusted bottom to 0 to ground it */}
+          <div className="pointer-events-none absolute bottom-0 right-[48%] z-20">
+            <img
+              src="/images/zoroark.gif"
+              alt="Zoroark"
+              className="h-64 w-auto object-contain"
+              style={{ imageRendering: "pixelated" }}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          {/* Trainer - Center Anchor */}
+          <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 -translate-x-1/2 drop-shadow-2xl">
+            <img
+              src="/images/avatar.png"
+              alt="Khoa"
+              className="h-72 w-auto object-contain"
+              style={{ imageRendering: "pixelated" }}
+            />
+          </div>
+
+          {/* Bayleef - Right Side (Large & Tucked In) */}
+          <div className="pointer-events-none absolute bottom-0 left-[56%] z-20">
+            <img
+              src="/images/bayleef.gif"
+              alt="Bayleef"
+              className="h-68 w-auto object-contain"
+              style={{ imageRendering: "pixelated" }}
+            />
+          </div>
+
+          {/* Clefairy - Between the Trainer's Legs (Front & Center) */}
+          <div className="pointer-events-none absolute bottom-0 left-1/2 z-50 -translate-x-1/2">
+            <img
+              src="/images/clefairy.gif"
+              alt="Clefairy"
+              className="h-20 w-auto object-contain"
+              style={{ imageRendering: "pixelated" }}
+            />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      {/* Bottom Section - Battle UI */}
+      <section className="w-full shrink-0 p-2">
+        <div className="flex flex-col items-stretch gap-2 md:flex-row">
+          {/* Left Column - Dialogue Box */}
+          <div className="w-full md:w-3/5">
+            <DialogueBox className="h-full" />
+          </div>
+
+          {/* Right Column - Command Menu */}
+          <div className="w-full md:w-2/5">
+            <div className="grid h-full grid-cols-2 gap-2">
+              {menuItems.map((item) => (
+                <CommandButton
+                  key={item.id}
+                  label={item.label}
+                  icon={item.icon}
+                  color={item.color}
+                  onClick={() => setSelectedOption(item.id)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Modal */}
+      <ContentModal
+        option={selectedOption}
+        onClose={() => setSelectedOption(null)}
+      />
+    </main>
+  )
 }

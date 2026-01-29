@@ -5,7 +5,6 @@ import { Book, Briefcase, Gamepad2, Package, type LucideIcon } from "lucide-reac
 import { DialogueBox } from "@/components/dialogue-box"
 import { CommandButton } from "@/components/command-button"
 import { ContentModal } from "@/components/content-modal"
-import { Logo } from "@/components/logo"
 
 export type MenuOption = "EDUCATION" | "EXPERIENCE" | "HOBBY" | "OTHERS" | null
 
@@ -58,10 +57,6 @@ export default function BattlePage() {
           minHeight: "60vh",
         }}
       >
-        {/* Logo */}
-        <div className="absolute top-6 left-6 z-50">
-          <Logo size={56} />
-        </div>
 
         {/* Character Stage */}
         <div className="relative mx-auto flex h-[500px] w-full max-w-[800px] items-end justify-center mb-14 scale-125 origin-bottom">

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Book, Briefcase, Gamepad2, Package } from "lucide-react"
+import { Book, Briefcase, Gamepad2, Package, type LucideIcon } from "lucide-react"
 import { DialogueBox } from "@/components/dialogue-box"
 import { CommandButton } from "@/components/command-button"
 import { ContentModal } from "@/components/content-modal"
@@ -9,40 +9,48 @@ import { Logo } from "@/components/logo"
 
 export type MenuOption = "EDUCATION" | "EXPERIENCE" | "HOBBY" | "OTHERS" | null
 
+// Define exactly what a menu item looks like
+type MenuItem = {
+  id: MenuOption
+  label: string
+  icon: LucideIcon
+  color: "red" | "blue" | "green" | "pink"
+}
+
 export default function BattlePage() {
   const [selectedOption, setSelectedOption] = useState<MenuOption>(null)
 
-  const menuItems = [
+  // Explicitly type this array as MenuItem[]
+  const menuItems: MenuItem[] = [
     {
-      id: "EDUCATION" as const,
+      id: "EDUCATION",
       label: "EDUCATION",
       icon: Book,
-      // FIX APPLIED: Added 'as const' to tell TypeScript this is exactly "blue"
-      color: "blue" as const, 
+      color: "blue",
     },
     {
-      id: "EXPERIENCE" as const,
+      id: "EXPERIENCE",
       label: "EXPERIENCE",
       icon: Briefcase,
-      color: "green" as const,
+      color: "green",
     },
     {
-      id: "HOBBY" as const,
+      id: "HOBBY",
       label: "HOBBY",
       icon: Gamepad2,
-      color: "red" as const,
+      color: "red",
     },
     {
-      id: "OTHERS" as const,
+      id: "OTHERS",
       label: "OTHERS",
       icon: Package,
-      color: "pink" as const,
+      color: "pink",
     },
   ]
 
   return (
     <main className="flex min-h-screen w-full flex-col bg-[#1a1a2e]">
-      {/* Top Section - Dark Forest Background with Layered Sprites */}
+      {/* Top Section - Dark Forest Background */}
       <section
         className="relative flex-1 flex flex-col justify-end bg-cover bg-bottom bg-repeat-x"
         style={{
@@ -50,15 +58,15 @@ export default function BattlePage() {
           minHeight: "60vh",
         }}
       >
-        {/* Logo positioned top-left */}
+        {/* Logo */}
         <div className="absolute top-6 left-6 z-50">
           <Logo size={56} />
         </div>
 
-        {/* Character Stage Container */}
+        {/* Character Stage */}
         <div className="relative mx-auto flex h-[500px] w-full max-w-[800px] items-end justify-center mb-14 scale-125 origin-bottom">
           
-          {/* Zoroark - Left Side */}
+          {/* Zoroark */}
           <div className="pointer-events-none absolute bottom-0 right-[48%] z-20">
             <img
               src="/images/zoroark.gif"
@@ -68,7 +76,7 @@ export default function BattlePage() {
             />
           </div>
 
-          {/* Trainer - Center */}
+          {/* Trainer */}
           <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 -translate-x-1/2 drop-shadow-2xl">
             <img
               src="/images/avatar.png"
@@ -78,7 +86,7 @@ export default function BattlePage() {
             />
           </div>
 
-          {/* Bayleef - Right Side */}
+          {/* Bayleef */}
           <div className="pointer-events-none absolute bottom-0 left-[56%] z-20">
             <img
               src="/images/bayleef.gif"
@@ -88,7 +96,7 @@ export default function BattlePage() {
             />
           </div>
 
-          {/* Clefairy - Front Center */}
+          {/* Clefairy */}
           <div className="pointer-events-none absolute bottom-0 left-1/2 z-50 -translate-x-1/2">
             <img
               src="/images/clefairy.gif"
@@ -113,7 +121,7 @@ export default function BattlePage() {
             <div className="grid h-full grid-cols-2 gap-2">
               {menuItems.map((item) => (
                 <CommandButton
-                  key={item.id}
+                  key={item.id as string}
                   label={item.label}
                   icon={item.icon}
                   color={item.color}

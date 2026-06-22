@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import { MapPin } from "lucide-react"
 
 const dialogueLines = [
-  "Hello hello, I'm Khoa (pronounced like quoi in French), an aspiring Product Manager studying Business Technology Management and Finance at UBC.",
+  "Hello hello, I'm Khoa (pronounced like quoi in French), an aspiring Product Manager currently working in Growth at Wealthsimple.",
   "I hope this website tells you more about me. Don't be afraid to reach out!",
-  "Vancouver, BC",
+  "Toronto, ON",
   "Email: kbsch28@gmail.com",
 ]
 

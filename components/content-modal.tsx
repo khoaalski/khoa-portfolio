@@ -17,7 +17,7 @@ const content = {
       {
         title: "University of British Columbia",
         subtitle: "Business Technology Management & Finance • May 2026",
-        description: "Somehow graduating with a degree. They call it a miracle!",
+        description: "Graduated with a degree. My parents call it a miracle!",
         logo: "/images/ubc.png",
       },
     ],
@@ -27,6 +27,12 @@ const content = {
     icon: Building2,
     type: "grass",
     items: [
+      {
+        title: "Wealthsimple",
+        subtitle: "Growth Specialist (Current)",
+        description: "Working on scaling our Credit Card and Monthly Millionaire products. Search them up!",
+        logo: "/images/wealthsimple.png",
+      },
       {
         title: "OpusClip",
         subtitle: "AI Product Manager (Nov 2025 - Jan 2026)",
@@ -71,9 +77,9 @@ const content = {
     type: "fire",
     items: [
       {
-        title: "Cinema",
-        subtitle: "Nobody (2025) hits so haaaard",
-        description: "Was the first time in a long time I watched such a good & relatable animated movie. Also love stuff like the Before trilogy and 500DOS.",
+        title: "Films in general",
+        subtitle: "Absolute Cinema!",
+        description: "I like stuff from Tarantino & Nolan. Favorite of all time: the Before trilogy (unrelated ik).",
         logo: "/images/movie.png",
       },
       {
@@ -91,7 +97,7 @@ const content = {
       {
         title: "Soccer",
         subtitle: "COYG!",
-        description: "This team is killing me man...",
+        description: "Guess what? We finally won something!",
         logo: "/images/arsenal.svg",
       },
     ],
@@ -104,7 +110,7 @@ const content = {
       {
         title: "Projects",
         subtitle: "How I got my in to Product Management",
-        description: "Built some random stuff here and there like [UBC Courses](http://ubccourses.app), or [Dance-Dance Revision](https://github.com/andrew-fenton/dance-dance-revision?tab=readme-ov-file). This made me realized my friends are so smart LOL.",
+        description: "Built some random software projects here and there. This made me realized my friends are so smart LOL.",
         logo: "/images/projects.png",
       },
       {
@@ -112,12 +118,6 @@ const content = {
         subtitle: "1989 is the best album of all times and I refuse to hear otherwise",
         description: "Don't know how I became a Swiftie but here we are.",
         logo: "/images/1989.png",
-      },
-      {
-        title: "Hosting Parties and Hackathons",
-        subtitle: "University memories",
-        description: "Joining clubs introduced me to so many people. Their passion and energy is contagious.",
-        logo: "/images/nwplus.png",
       },
     ],
   },

@@ -29,7 +29,7 @@ const content = {
     items: [
       {
         title: "Wealthsimple",
-        subtitle: "Growth Specialist (Current)",
+        subtitle: "Growth Coordinator (Current)",
         description: "Working on scaling our Credit Card and Monthly Millionaire products. Search them up!",
         logo: "/images/wealthsimple.png",
       },
